@@ -204,5 +204,7 @@ void handle_buoy(char *cmd)
 {
     printf("Welcome to OceanLife -> support\n");
     printf("Are you stuck? to break free enter -> sink \n");
-    printf("File creatoon -> tides 'filename.ext' \n");
+    printf("File creation -> tides 'filename.ext' \n");
+    printf("File deletion -> waves 'filename.ext' \n");
+    printf("File write -> inkit 'filename.ext' \n");
 }

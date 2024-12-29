@@ -5,7 +5,7 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 
-// Function declarations
+// declaring functions
 void execute_command(char *cmd);
 void handle_tides(char *cmd);
 void handle_waves(char *cmd);
@@ -14,7 +14,7 @@ void handle_dive(char *cmd);
 void handle_uhoh(void);
 void handle_greet(void);
 
-// Main function
+// The main Kraken
 int main()
 {
     char cmd[100];
@@ -52,7 +52,7 @@ void execute_command(char *cmd)
     }
     else if (strncmp(cmd, "dive", 4) == 0)
     {
-        handle_inkit(cmd);
+        handle_dive(cmd);
     }
     else if (strncmp(cmd, "uhoh", 4) == 0)
     {
@@ -151,12 +151,37 @@ void handle_greet(void)
 
 void handle_dive(char *cmd)
 {
-    char filename[150];
-    sscanf(cmd, "dive %s", filename);
+    char filename[100] = {0};
+
+    // extract the file name
+    if (sscanf(cmd, "dive %s", filename) != 1)
+    {
+        printf("Error: Invalid command. Usage: dive <filename>\n");
+        return;
+    }
+
+    printf("Filename parsed: '%s'\n", filename);
+
+    if (filename[0] == '\0')
+    {
+        printf("Error: No filename specified.\n");
+        return;
+    }
+
     FILE *file = fopen(filename, "r");
     if (file == NULL)
     {
-        perror("Error opening file for writing");
+        perror("Error opening file for reading");
         return;
     }
+
+    printf("Contents of '%s':\n", filename);
+    char buffer[256];
+    while (fgets(buffer, sizeof(buffer), file))
+    {
+        printf("%s", buffer); // Print each line from the file
+    }
+
+    fclose(file);
+    printf("\nEnd of file reached.\n");
 }

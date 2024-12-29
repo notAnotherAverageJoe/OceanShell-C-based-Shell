@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/stat.h>
-
+#define MAX_CMD_LENGTH 100
 #define BLUE "\033[0;34m"
 #define TEAL "\033[0;36m"
 #define GREEN "\033[0;32m"
@@ -24,18 +24,25 @@ void handle_buoy(char *cmd);
 // The main Kraken
 int main()
 {
-    printf(GREEN "Welcome to OceanLife Shell\n" RESET);
-
-    printf(GREEN "If you need support or general Q&A enter 'buoy'\n" RESET);
-    char cmd[100];
+    char *cmd = NULL; // Pointer for dynamic memory allocation
+    size_t len = 0;   // To keep track of the length of the input
+    ssize_t read;     // To hold the number of characters read
 
     while (1)
     {
         printf(TEAL "OceanLife 🌊 -> " RESET);
-        fgets(cmd, sizeof(cmd), stdin);
-        cmd[strcspn(cmd, "\n")] = 0;
+        read = getline(&cmd, &len, stdin); // getline handles dynamic allocation
 
-        if (strcmp(cmd, "exit") == 0)
+        if (read == -1)
+        {
+            perror("Error reading input");
+            free(cmd); // Free the dynamically allocated memory
+            break;
+        }
+
+        cmd[strcspn(cmd, "\n")] = 0; // Remove newline character
+
+        if (strcmp(cmd, "sink") == 0)
         {
             break;
         }
@@ -43,6 +50,7 @@ int main()
         execute_command(cmd);
     }
 
+    free(cmd); // Free memory when done
     return 0;
 }
 

@@ -19,10 +19,14 @@ void handle_inkit(char *cmd);
 void handle_dive(char *cmd);
 void handle_uhoh(void);
 void handle_greet(void);
+void handle_buoy(char *cmd);
 
 // The main Kraken
 int main()
 {
+    printf(GREEN "Welcome to OceanLife Shell\n" RESET);
+
+    printf(GREEN "If you need support or general Q&A enter 'buoy'\n" RESET);
     char cmd[100];
 
     while (1)
@@ -68,9 +72,14 @@ void execute_command(char *cmd)
     {
         handle_greet();
     }
-    else if (strcmp(cmd, "exit") == 0)
+    // This is help & Q/A
+    else if (strncmp(cmd, "buoy", 4) == 0)
     {
-        printf("Exiting shell...\n");
+        handle_buoy(cmd);
+    }
+    else if (strcmp(cmd, "sink") == 0)
+    {
+        printf(BLUE "Exiting shell...\n" RESET);
         exit(0);
     }
     else
@@ -78,7 +87,7 @@ void execute_command(char *cmd)
         int status = system(cmd);
         if (status == -1)
         {
-            perror("Error executing command");
+            perror(RED "Error executing command" RESET);
         }
     }
 }
@@ -190,4 +199,10 @@ void handle_dive(char *cmd)
 
     fclose(file);
     printf("\nEnd of file reached.\n");
+}
+void handle_buoy(char *cmd)
+{
+    printf("Welcome to OceanLife -> support\n");
+    printf("Are you stuck? to break free enter -> sink \n");
+    printf("File creatoon -> tides 'filename.ext' \n");
 }

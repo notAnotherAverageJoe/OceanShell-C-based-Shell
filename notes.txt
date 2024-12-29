@@ -9,3 +9,9 @@ Add More Ocean Commands: For example:
 "sink": Close the shell with a splash.
 "buoy": Display help for commands.
 Your shell could become a delightful, themed interface for interacting with the system! 🌊
+
+
+
+Add More Command Features: Consider adding other helpful commands, such as ls (list files), clear (clear screen), or pwd (print working directory).
+Error Handling: Add more detailed error messages, especially for cases like trying to delete a file that doesn't exist or trying to write to a file that’s not writable.
+User Experience: Implement color coding (using ANSI escape codes) for better user experience, like success messages in green and errors in red.

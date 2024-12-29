@@ -5,6 +5,12 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 
+#define BLUE "\033[0;34m"
+#define TEAL "\033[0;36m"
+#define GREEN "\033[0;32m"
+#define RED "\033[0;31m"
+#define RESET "\033[0m"
+
 // declaring functions
 void execute_command(char *cmd);
 void handle_tides(char *cmd);
@@ -21,7 +27,7 @@ int main()
 
     while (1)
     {
-        printf("OceanLife 🌊 -> ");
+        printf(TEAL "OceanLife 🌊 -> " RESET);
         fgets(cmd, sizeof(cmd), stdin);
         cmd[strcspn(cmd, "\n")] = 0;
 
@@ -84,11 +90,11 @@ void handle_tides(char *cmd)
     int fd = open(filename, O_CREAT | O_WRONLY, S_IRUSR | S_IWUSR);
     if (fd == -1)
     {
-        perror("Error creating file");
+        perror(RED "Error creating file" RESET);
     }
     else
     {
-        printf("File '%s' created successfully.\n", filename);
+        printf(GREEN "File '%s' created successfully.\n" RESET, filename);
         close(fd);
     }
 }
@@ -171,7 +177,7 @@ void handle_dive(char *cmd)
     FILE *file = fopen(filename, "r");
     if (file == NULL)
     {
-        perror("Error opening file for reading");
+        perror(RED "Error opening file for reading" RESET);
         return;
     }
 

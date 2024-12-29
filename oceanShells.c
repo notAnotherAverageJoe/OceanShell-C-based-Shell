@@ -10,7 +10,7 @@ void execute_command(char *cmd);
 void handle_tides(char *cmd);
 void handle_waves(char *cmd);
 void handle_inkit(char *cmd);
-void handle_dice(char *cmd);
+void handle_dive(char *cmd);
 void handle_uhoh(void);
 void handle_greet(void);
 
@@ -47,6 +47,10 @@ void execute_command(char *cmd)
         handle_waves(cmd);
     }
     else if (strncmp(cmd, "inkit", 5) == 0)
+    {
+        handle_inkit(cmd);
+    }
+    else if (strncmp(cmd, "dive", 4) == 0)
     {
         handle_inkit(cmd);
     }
@@ -147,5 +151,12 @@ void handle_greet(void)
 
 void handle_dive(char *cmd)
 {
-    char filename[150]
+    char filename[150];
+    sscanf(cmd, "dive %s", filename);
+    FILE *file = fopen(filename, "r");
+    if (file == NULL)
+    {
+        perror("Error opening file for writing");
+        return;
+    }
 }

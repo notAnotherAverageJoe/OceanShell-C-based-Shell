@@ -4,6 +4,8 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/stat.h>
+#include <dirent.h>
+#include <errno.h>
 
 #define MAX_CMD_LENGTH 100
 #define BLUE "\033[0;34m"
@@ -21,6 +23,7 @@ void handle_dive(char *cmd);
 void handle_uhoh(void);
 void handle_greet(void);
 void handle_buoy(char *cmd);
+void handle_current(char *cmd);
 
 // The main Kraken
 int main()
@@ -86,6 +89,10 @@ void execute_command(char *cmd)
     else if (strncmp(cmd, "buoy", 4) == 0)
     {
         handle_buoy(cmd);
+    }
+    else if (strncmp(cmd, "current", 8) == 0)
+    {
+        handle_current(cmd);
     }
 
     else
@@ -205,6 +212,33 @@ void handle_dive(char *cmd)
 
     fclose(file);
     printf("\nEnd of file reached.\n");
+}
+
+void handle_current(char *cmd)
+{
+    DIR *directory;
+    struct dirent *entry;
+
+    // this will open the directory
+    directory = opendir(".");
+    if (directory == NULL)
+    {
+        perror("We got a problem matey, unable to open current directory.");
+        return;
+    }
+    // Now we will read the directory files
+    printf("Current files in directory:\n");
+    while ((entry = readdir(directory)) != NULL)
+    {
+        // skipping the hidden files for now
+        // may make a function to handle that later.
+        // so any file starting with . or .. will be ignored
+        if (strncmp(entry->d_name, ".", 1) != 0)
+        {
+            printf("%s\n", entry->d_name);
+        }
+    }
+    closedir(directory);
 }
 void handle_buoy(char *cmd)
 {

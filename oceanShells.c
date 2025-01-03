@@ -218,6 +218,7 @@ void handle_current(char *cmd)
 {
     DIR *directory;
     struct dirent *entry;
+    int count;
 
     // this will open the directory
     directory = opendir(".");
@@ -235,9 +236,17 @@ void handle_current(char *cmd)
         // so any file starting with . or .. will be ignored
         if (strncmp(entry->d_name, ".", 1) != 0)
         {
-            printf("%s\n", entry->d_name);
+            printf("%s  ", entry->d_name);
+            count++;
+        }
+        if (count % 5 == 0)
+        {
+            printf("\n");
         }
     }
+
+    printf("\n");
+
     closedir(directory);
 }
 void handle_buoy(char *cmd)

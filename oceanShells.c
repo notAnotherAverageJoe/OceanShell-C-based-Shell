@@ -45,7 +45,7 @@ int main()
 
         if (strcmp(cmd, "sink") == 0)
         {
-            printf("Sea you soon!\n");
+            printf(BLUE "Sea you soon!\n" RESET);
             break;
         }
 

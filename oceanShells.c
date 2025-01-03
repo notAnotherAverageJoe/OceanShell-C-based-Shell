@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/stat.h>
+
 #define MAX_CMD_LENGTH 100
 #define BLUE "\033[0;34m"
 #define TEAL "\033[0;36m"
@@ -44,6 +45,7 @@ int main()
 
         if (strcmp(cmd, "sink") == 0)
         {
+            printf("Sea you soon!\n");
             break;
         }
 
@@ -85,11 +87,7 @@ void execute_command(char *cmd)
     {
         handle_buoy(cmd);
     }
-    else if (strcmp(cmd, "sink") == 0)
-    {
-        printf(BLUE "Exiting shell...\n" RESET);
-        exit(0);
-    }
+
     else
     {
         int status = system(cmd);

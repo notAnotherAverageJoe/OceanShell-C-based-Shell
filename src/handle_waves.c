@@ -1,6 +1,8 @@
 #include "../headers/handle_waves.h"
 #include <stdio.h>
 #include <stdlib.h>
+#define RED "\033[0;31m"
+#define RESET "\033[0m"
 
 void handle_waves(char *cmd)
 {
@@ -9,7 +11,7 @@ void handle_waves(char *cmd)
 
     if (remove(filename) == 0)
     {
-        printf("File '%s' deleted successfully.\n", filename);
+        printf(RED "File '%s' deleted successfully.\n" RESET, filename);
     }
     else
     {

@@ -6,6 +6,7 @@
 #include <sys/stat.h>
 #include <dirent.h>
 #include <errno.h>
+#include "./headers/handle_waves.h"
 
 #define MAX_CMD_LENGTH 100
 #define BLUE "\033[0;34m"
@@ -17,7 +18,6 @@
 // declaring functions
 void execute_command(char *cmd);
 void handle_tides(char *cmd);
-void handle_waves(char *cmd);
 void handle_inkit(char *cmd);
 void handle_dive(char *cmd);
 void handle_uhoh(void);
@@ -121,20 +121,7 @@ void handle_tides(char *cmd)
     }
 }
 
-void handle_waves(char *cmd)
-{
-    char filename[100];
-    sscanf(cmd, "waves %s", filename);
-
-    if (remove(filename) == 0)
-    {
-        printf("File '%s' deleted successfully.\n", filename);
-    }
-    else
-    {
-        perror("Error deleting file");
-    }
-}
+void handle_waves(char *cmd);
 
 void handle_inkit(char *cmd)
 {

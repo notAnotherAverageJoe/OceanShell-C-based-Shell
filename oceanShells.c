@@ -7,6 +7,7 @@
 #include <dirent.h>
 #include <errno.h>
 #include "./headers/handle_waves.h"
+#include "./headers/handle_tides.h"
 
 #define MAX_CMD_LENGTH 100
 #define BLUE "\033[0;34m"
@@ -18,6 +19,7 @@
 // declaring functions
 void execute_command(char *cmd);
 void handle_tides(char *cmd);
+void handle_waves(char *cmd);
 void handle_inkit(char *cmd);
 void handle_dive(char *cmd);
 void handle_uhoh(void);
@@ -104,24 +106,6 @@ void execute_command(char *cmd)
         }
     }
 }
-void handle_tides(char *cmd)
-{
-    char filename[100];
-    sscanf(cmd, "tides %s", filename);
-
-    int fd = open(filename, O_CREAT | O_WRONLY, S_IRUSR | S_IWUSR);
-    if (fd == -1)
-    {
-        perror(RED "Error creating file" RESET);
-    }
-    else
-    {
-        printf(GREEN "File '%s' created successfully.\n" RESET, filename);
-        close(fd);
-    }
-}
-
-void handle_waves(char *cmd);
 
 void handle_inkit(char *cmd)
 {

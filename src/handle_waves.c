@@ -1,5 +1,4 @@
-// handle_waves.c
-#include "../headers/handle_waves.h" // Include the header file to access the function declaration
+#include "../headers/handle_waves.h"
 #include <stdio.h>
 #include <stdlib.h>
 

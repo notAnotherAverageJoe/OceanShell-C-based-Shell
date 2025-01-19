@@ -1,9 +1,8 @@
-// handle_waves.h
-#ifndef HANDLE_WAVES_H // Header guard to prevent multiple inclusions
+#ifndef HANDLE_WAVES_H
 #define HANDLE_WAVES_H
 
 #include <stdio.h>
 
-void handle_waves(char *cmd); // Function declaration
+void handle_waves(char *cmd);
 
-#endif // HANDLE_WAVES_H
+#endif

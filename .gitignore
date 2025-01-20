@@ -2,3 +2,4 @@ notes.txt
 /notes.txt
 .vscode
 ./vscode
+*.o

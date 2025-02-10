@@ -62,6 +62,7 @@ Welcome to **OceanLife Shell**, a command-line tool that lets you navigate and i
    ```bash
    git clone
    ```
-2. make
+2. Then type
+   make
 
 3. ./oceanShells

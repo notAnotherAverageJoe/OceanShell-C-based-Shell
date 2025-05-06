@@ -11,4 +11,18 @@ void handle_boilers(char *cmd)
         printf("Usage: boilers <filename.ext>\n");
         return;
     }
+
+    char *ext = strrchr(filename, '.');
+    if (!ext)
+    {
+        printf("Error: No file extension found. \n");
+        return;
+    }
+
+    FILE *file = fopen(filename, "w");
+    if (!file)
+    {
+        perror("Error creating file");
+        return;
+    }
 }

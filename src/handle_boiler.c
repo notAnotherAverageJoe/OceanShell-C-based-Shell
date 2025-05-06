@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-void handle_boilers(char *cmd)
+void handle_boiler(char *cmd)
 {
     char filename[100];
     if (sscanf(cmd, "boiler %s", filename) != 1)
@@ -40,7 +40,7 @@ void handle_boilers(char *cmd)
     }
     else if (strcmp(ext, ".html") == 0)
     {
-        fprintf(file, "<!DOCTYPE html>\n<html>\n<head><title>Boilerplate</title></head>\n<body>\n<h1>Hello, world!</h1>\n</body>\n</html>\n");
+        fprintf(file, "<!DOCTYPE html>\n<html>\n<head><title>Enter your title!</title></head>\n<body>\n<h1>Hello, world!</h1>\n</body>\n</html>\n");
     }
     else
     {

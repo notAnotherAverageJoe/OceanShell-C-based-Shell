@@ -8,6 +8,7 @@
 #include <errno.h>
 #include "./headers/handle_waves.h"
 #include "./headers/handle_tides.h"
+#include "./headers/handle_boilers.h"
 
 #define MAX_CMD_LENGTH 100
 #define BLUE "\033[0;34m"
@@ -96,7 +97,10 @@ void execute_command(char *cmd)
     {
         handle_current(cmd);
     }
-
+    else if (strncmp(cmd, "boiler", 6) == 0 || strncmp(cmd, "boilers", 7) == 0)
+    {
+        handle_boiler(cmd);
+    }
     else
     {
         int status = system(cmd);

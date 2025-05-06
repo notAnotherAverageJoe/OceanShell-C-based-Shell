@@ -6,7 +6,7 @@ CFLAGS = -Wall -g
 TARGET = oceanShells
 
 # Define the source files
-SRC = oceanShells.c src/handle_waves.c src/handle_tides.c
+SRC = oceanShells.c src/handle_waves.c src/handle_tides.c src/handle_boiler.c
 
 # Define the object files (compiled .o files)
 OBJ = $(SRC:.c=.o)

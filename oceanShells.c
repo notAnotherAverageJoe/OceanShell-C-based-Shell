@@ -231,5 +231,6 @@ void handle_buoy(char *cmd)
     printf("File creation -> tides 'filename.ext' \n");
     printf("File deletion -> waves 'filename.ext' \n");
     printf("File write -> inkit 'filename.ext' \n");
+    printf("file Read => dive 'filename.ext' \n");
     printf("Type 'current' to get the current directory \n");
 }

@@ -56,6 +56,8 @@ Welcome to **OceanLife Shell**, a command-line tool that lets you navigate and i
 
 - Display a warning message (don’t worry, it’s just for fun!).
 
+### 10. **Boilers** 📖
+
 ## 🛠️ **Installation & Setup:**
 
 1. Clone the repository:

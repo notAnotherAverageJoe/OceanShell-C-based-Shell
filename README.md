@@ -58,6 +58,9 @@ Welcome to **OceanLife Shell**, a command-line tool that lets you navigate and i
 
 ### 10. **Boilers** 📖
 
+- Create files with some boiler plate already set up, -> boiler main.py
+  This will create a Python file with print("Hello, World!).
+
 ## 🛠️ **Installation & Setup:**
 
 1. Clone the repository:

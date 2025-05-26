@@ -44,6 +44,16 @@ After running the command, the shell will prompt you to enter content for notes.
 
 ---
 
+### Boilers
+
+Description: This command allows you to create HTML, Python, JavaScript and C templates with a hello, world! boiler plate inside.
+Features:
+This allows you to easily create new files with the boiler plate information already taken care of.
+
+Example:
+boiler main.py
+This will create a Python file with print("Hello, World!"), inside of it.
+
 ---
 
 #### Additional Commands:
